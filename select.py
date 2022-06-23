@@ -24,6 +24,20 @@ sel_3 = connection.execute("""SELECT name_track, time FROM track
     """).fetchall()
 pprint(sel_3)
 
+# 4 названия сборников, вышедших в период с 2018 по 2020 год включительно
+sel_4 = connection.execute(""" SELECT name, year FROM collection
+    WHERE year >= 2018 AND  year <= 2020;
+    """).fetchall()
+pprint(sel_4)
 
+#5 исполнители, чье имя состоит из 1 слова;
+sel_5 = connection.execute(""" SELECT name FROM artist
+    WHERE name NOT LIKE '%% %%'
+    """).fetchall()
+pprint(sel_5)
 
-
+# 6 название треков, которые содержат слово "мой"/"my".
+sel_6 = connection.execute(""" SELECT name FROM song
+    WHERE name LIKE '%%My%%'
+    """).fetchall()
+pprint(sel_6)
